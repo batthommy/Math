@@ -1,0 +1,508 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::selection {
+    background-color: #9595958f;
+    color: rgb(255, 255, 255);
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+
+    background-image: url("sfondomaththomas.png");
+    background-repeat: repeat;
+    background-size: 350px;
+}
+#contgen {
+    width: 80%;
+    margin: 0 auto;
+}
+input, button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border: none;
+    outline: none;
+    background: none;
+
+    box-shadow: none;
+}
+
+
+header {
+    background-color: #4CAF50;
+    color: rgb(255, 250, 227);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header h1 {
+    letter-spacing: 3px;
+    font-size: 3.5em;
+    line-height: 1.2em;
+    margin: 35px 0;
+}
+
+#ricerca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    background-color: #f0f0f0;
+    gap: 5px;
+}
+#barra-ricerca {
+    width: 80%;
+    padding: 10px;
+    height: 27.200px;
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    border-radius: calc(27.200px / 2);
+    border: 1px solid #ccc;
+    transition: border-radius 0.2s ease;
+}
+#barra-ricerca:focus {
+    background-color: rgb(239, 239, 239);
+    border-radius: 6px;
+}
+#bottone-ricerca {
+    width: 5%;
+    padding: 5px;
+    height: 27.200px;
+    background-color: #4CAF50;
+    color: #f0f0f0;
+    border-radius: calc(27.200px / 2);
+    border: none;
+    cursor: pointer;
+    transition: border-radius 0.05s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#bottone-ricerca:active {
+    background-color: #3C9F40;
+    border-radius: 6px;
+}
+#bottone-apri {
+    width: 15%;
+    padding: 5px;
+    height: 27.200px;
+
+    background-color: #4caf4fd4;
+    color: #f0f0f0;
+
+    border-radius: calc(27.200px / 2);
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-radius 0.1s ease,
+        transform 0.2s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    user-select: none;
+}
+#bottone-apri:hover {
+    background-color: #45a049d4;
+}
+#bottone-apri:active {
+    background-color: #3C9F40d4;
+    border-radius: 6px;
+}
+/* menu aperto */
+#bottone-apri.aperto {
+    transform: rotate(180deg);
+}
+
+
+#catalogo {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 0;
+    background-color: #f7f7f7;
+    padding-left: 14px;
+    padding-right: 14px;
+    transition:
+        max-height 0.35s ease,
+        padding-top 0.35s ease,
+        padding-bottom 0.35s ease;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 transparent;
+    z-index: 1000000;
+}
+/* aperto */
+#catalogo.aperto {
+    max-height: 240px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border: 1px solid #d9d9d9;
+}
+/* scrollbar chrome */
+#catalogo::-webkit-scrollbar {
+    width: 7px;
+}
+#catalogo::-webkit-scrollbar-thumb {
+    background-color: #4CAF50;
+    border-radius: 999px;
+}
+/* span catalogo */
+#catalogo span {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease,
+        border-color 0.15s ease;
+}
+
+#catalogo span:hover {
+    background-color: #edf7ed;
+    border-color: #4CAF50;
+    transform: translateY(-1px);
+}
+#catalogo span:active {
+    transform: scale(0.96);
+}
+#catalogo span.selezionato {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+#cosa {
+    width: fit-content;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(138, 66, 205, 0.95);
+    padding: 3px 7px;
+    border-radius: 7px;
+}
+
+
+
+
+@media (max-width: 650px) {
+    #contgen {
+        width: 90%;
+    }
+}
+@media (max-width: 450px) {
+    #contgen {
+        width: 100%;
+    }
+
+    #bottone-ricerca {
+        border-radius: 6px;
+        width: 15%;
+    }
+    #barra-ricerca {
+        width: 65%;
+    }
+    #bottone-apri {
+        width: 20%;
+    }
+}
+
+/* pagina */
+
+.inizio {
+    margin: 40px;
+    text-align: center;
+}
+
+/* -----------------------------------
+   CONTENUTO PAGINE
+----------------------------------- */
+
+#contenutopage {
+    width: 100%;
+    padding: 30px;
+    background-color: rgb(244, 244, 244);
+
+    line-height: 1.7em;
+    font-size: 17px;
+}
+
+#contenutopage h2 {
+    font-size: 42px;
+    margin-bottom: 25px;
+
+    color: #2f7e33;
+}
+
+#contenutopage h3 {
+    font-size: 28px;
+    margin-top: 35px;
+    margin-bottom: 12px;
+
+    color: #3b3b3b;
+}
+
+#contenutopage p {
+    margin-bottom: 15px;
+}
+
+#contenutopage ul {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+#contenutopage li {
+    margin-bottom: 8px;
+}
+
+#contenutopage b {
+    color: #222;
+}
+
+#contenutopage sup {
+    color: #4CAF50;
+}
+
+#contenutopage hr {
+    margin: 35px 0;
+    border: none;
+    height: 1px;
+    background-color: #d8d8d8;
+}
+
+#contenutopage .formula {
+    font-size: 28px;
+    text-align: center;
+
+    margin: 25px 0;
+
+    font-weight: bold;
+
+    color: #2f7e33;
+}
+
+#contenutopage .box {
+    background-color: white;
+
+    border-left: 5px solid #4CAF50;
+
+    padding: 18px;
+
+    margin: 25px 0;
+
+    border-radius: 10px;
+}
+
+#contenutopage .mini {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+#contenutopage img {
+    max-width: 100%;
+    border-radius: 14px;
+
+    margin: 20px 0;
+}
+
+
+
+
+#torna-home {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    background-color: #4CAF50;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    z-index: 100000;
+
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+#torna-home:hover {
+    background-color: #45a049;
+
+    transform: translateY(-1px);
+}
+
+#torna-home:active {
+    transform: scale(0.96);
+}
+
+
+
+#impo {
+    width: 32px;
+    min-width: 32px;
+    height: 27.200px;
+
+    background-color: #4caf4fd4;
+    color: #f0f0f0;
+
+    border-radius: calc(27.200px / 2);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-radius 0.1s ease,
+        transform 0.15s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    user-select: none;
+}
+
+#impo:hover {
+    background-color: #45a049d4;
+
+    transform: rotate(20deg);
+}
+
+#impo:active {
+    background-color: #3C9F40d4;
+
+    border-radius: 6px;
+
+    transform: scale(0.92);
+}
+
+#impo.aperto {
+    background-color:#3C9F40d4;
+
+    transform:rotate(90deg);
+}
+
+#menu-impo {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap: 12px;
+
+    background-color: #f7f7f7;
+
+    padding-left: 14px;
+    padding-right: 14px;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease,
+        padding-top 0.35s ease,
+        padding-bottom 0.35s ease;
+
+    border-top: 1px solid #d9d9d9;
+}
+
+#menu-impo.aperto {
+    max-height: 700px;
+
+    opacity: 1;
+
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.impo-card {
+    background-color: rgb(248,248,248);
+
+    border: 1px solid #dcdcdc;
+
+    border-left: 4px solid #4CAF50;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        background-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.impo-card:hover {
+    background-color: #f8fff8;
+
+    border-color: #4CAF50;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,0.07);
+}
+
+.impo-card:active {
+    transform: scale(0.985);
+}
+
+.impo-titolo {
+    font-size: 15px;
+    font-weight: bold;
+
+    color: #2f7e33;
+
+    margin-bottom: 10px;
+}
+
+.impo-testo {
+    font-size: 14px;
+
+    line-height: 1.6em;
+
+    opacity: 0.82;
+}

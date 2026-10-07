@@ -1,0 +1,60 @@
+[
+    {
+        "argomento": "Numero di nephero, e",
+        "file": "e.html",
+        "best": true
+    },
+    {
+        "argomento": "pigreco, π",
+        "file": "pi.html",
+        "best": true
+    },
+    {
+        "argomento": "7, un numero stranamente ricorrente",
+        "file": "sette.html"
+    },
+    {
+        "argomento": "basi in generale",
+        "file": "basi.html"
+    },
+    {
+        "argomento": "Calcolatrice Avanzata [BETA]",
+        "file": "calcolatrice.html"
+    },
+    {
+        "argomento": "Numeri Primi",
+        "file": "primi.html",
+        "best": true
+    },
+    {
+        "argomento": "Numero aureo φ",
+        "file": "aureo.html"
+    },
+    {
+        "argomento": "Fibonacci, la sequenza più famosa",
+        "file": "fibonacci.html"
+    },
+    {
+        "argomento": "infinito",
+        "file": "infinito.html",
+        "best": true
+    },
+    {
+        "argomento": "i, unità immaginaria",
+        "file": "i.html",
+        "best": true
+    },
+    {
+        "argomento": "Teorema di Pitagora",
+        "file": "pitagora-teorema.html"
+    },
+    {
+        "argomento": "numeri perfetti",
+        "file": "perfetti.html",
+        "best": true
+    },
+    {
+        "argomento": "zero, 0",
+        "file": "zero.html"
+    }
+]

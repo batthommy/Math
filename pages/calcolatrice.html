@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html lang="it">
+    <head>
+        <!-- Configurazione Tecnica -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- SEO e Informazioni Pagina -->
+        <title>Math Of Thomas</title>
+        <!-- <meta name="description" content="--DESCRIZIONE_SEO_PER_GOOGLE--"> -->
+        <meta name="keywords" content="matematica">
+        <meta name="author" content="Thomas Battaglia, ATM">
+        <!-- <link rel="canonical" href="--URL_ASSOLUTO_DI_QUESTA_PAGINA--"> -->
+
+        <!-- Icone e Stili -->
+        <link rel="icon" href="../logo.png" type="image/x-icon">
+
+        <!-- Social (Open Graph / Facebook / WhatsApp) -->
+        <meta property="og:title" content="Math Of Thomas">
+        <meta property="og:description" content="Argomenti di matematica molto vasti">
+        <meta property="og:image" content="../logo.png">
+        <meta property="og:url" content="https://battagliatlc.it/math/pages/calcolatrice.html?tipe=Calcolatrice%20Avanzata%20%5BBETA%5D">
+        <meta property="og:type" content="website">
+
+        <!-- Social (Twitter Card) -->
+        <!-- <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="--TITOLO_PER_TWITTER--">
+        <meta name="twitter:description" content="--DESCRIZIONE_PER_TWITTER--">
+        <meta name="twitter:image" content="--URL_IMMAGINE_PER_TWITTER--.jpg"> -->
+
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="stylesheet" href="pagine.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+
+        #calc-thomas {
+            width: 100%;
+            max-width: 420px;
+
+            margin: 30px auto;
+
+            padding: 14px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f7f7f7,
+                    #e9e9e9
+                );
+
+            border: 1px solid #d6d6d6;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        #calc-display {
+            width: 100%;
+            height: 55px;
+
+            padding: 12px;
+
+            border: none;
+            outline: none;
+
+            border-radius: 12px;
+
+            background-color: white;
+
+            color: #2f7e33;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            text-align: right;
+
+            box-shadow:
+                inset 0 0 8px rgba(0,0,0,0.08);
+        }
+
+        #calc-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin:
+                8px 2px 14px;
+
+            font-size: 11px;
+
+            opacity: 0.75;
+        }
+
+        .calc-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 7px;
+
+            margin-bottom: 10px;
+        }
+
+        #calc-thomas button {
+            height: 38px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background-color: white;
+
+            color: #333;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 2px 6px rgba(0,0,0,0.08);
+
+            transition:
+                transform 0.12s ease,
+                background-color 0.12s ease;
+        }
+
+        #calc-thomas button:hover {
+            background-color: #f3f3f3;
+
+            transform: translateY(-1px);
+        }
+
+        #calc-thomas button:active {
+            transform: scale(0.95);
+        }
+
+        .funzioni button {
+            background-color: #4CAF50 !important;
+
+            color: white !important;
+        }
+
+        #uguale {
+            background-color: #4CAF50 !important;
+
+            color: white !important;
+        }
+
+        #uguale:hover {
+            background-color: #43a047 !important;
+        }
+
+        #costanti {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 7px;
+        }
+
+        #costanti button {
+            background-color: #2f7e33 !important;
+
+            color: white !important;
+        }
+
+        @media (max-width:500px) {
+
+            #calc-thomas {
+                max-width: 100%;
+            }
+
+        }
+
+        </style>
+    </head>
+    <body>
+        <noscript>
+            <p>NON HAI JAVASCRIPT, PER TE LE COSE FUNZIONERANNO DECISAMENTE MALE. RIABILITALO</p>
+        </noscript>
+
+        <div id="cosa"></div>
+
+
+        <div id="contgen">
+            <a href="../index.html" id="torna-home">
+                ← Home
+            </a>
+
+            <header>
+                <h1>Math <sup>Of</sup><br>Thomas</h1>
+            </header>
+
+            <div id="ricerca">
+                <button id="impo">⚙</button>
+                <input type="text" id="barra-ricerca" placeholder="Cosa vuoi cercare?">
+                <button id="bottone-ricerca">🔍︎</button>
+                <button id="bottone-apri">⌄</button>
+            </div>
+            <div id="catalogo"></div>
+            <div id="menu-impo">
+
+                <div class="impo-card" id="torna-home-card">
+                    <div class="impo-titolo">
+                        🏠 Home
+                    </div>
+
+                    <div class="impo-testo">
+                        Torna alla home principale
+                    </div>
+                </div>
+
+                <div class="impo-card" id="ultimo-articolo">
+                    <div class="impo-titolo">
+                        🟢 Ultimo uscito
+                    </div>
+
+                    <div class="impo-testo">
+                        Caricamento...
+                    </div>
+                </div>
+
+                <div class="impo-card" id="articolo-random">
+                    <div class="impo-titolo">
+                        🎲 Articolo casuale
+                    </div>
+
+                    <div class="impo-testo">
+                        Apri qualcosa a caso
+                    </div>
+                </div>
+
+                <div class="impo-card" id="articolo-best">
+                    <div class="impo-titolo">
+                        🔥 Scelti da Thomas
+                    </div>
+
+                    <div class="impo-testo">
+                        Caricamento...
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="contenutopage">
+                <div id="calc-thomas">
+
+                    <input id="calc-display" value="0" readonly>
+
+                    <div id="calc-info">
+                        <span id="calc-mode">RAD</span>
+                        <span id="calc-msg">Pronta</span>
+                    </div>
+
+                    <div class="calc-grid funzioni">
+                        <button onclick="toggleAngolo()">RAD/DEG</button>
+                        <button onclick="aggiungi('π')">π</button>
+                        <button onclick="aggiungi('e')">e</button>
+                        <button onclick="aggiungi('φ')">φ</button>
+
+                        <button onclick="aggiungi('sqrt(')">√</button>
+                        <button onclick="aggiungi('^')">xʸ</button>
+                        <button onclick="aggiungi('!')">x!</button>
+                        <button onclick="aggiungi('%')">%</button>
+
+                        <button onclick="aggiungi('sin(')">sin</button>
+                        <button onclick="aggiungi('cos(')">cos</button>
+                        <button onclick="aggiungi('tan(')">tan</button>
+                        <button onclick="aggiungi('log(')">log</button>
+
+                        <button onclick="aggiungi('ln(')">ln</button>
+                        <button onclick="aggiungi('abs(')">abs</button>
+                        <button onclick="aggiungi('round(')">round</button>
+                        <button onclick="aggiungi('exp(')">exp</button>
+                    </div>
+
+                    <div class="calc-grid tastiera">
+                        <button onclick="pulisci()">C</button>
+                        <button onclick="cancellaUno()">⌫</button>
+                        <button onclick="aggiungi('(')">(</button>
+                        <button onclick="aggiungi(')')">)</button>
+
+                        <button onclick="aggiungi('7')">7</button>
+                        <button onclick="aggiungi('8')">8</button>
+                        <button onclick="aggiungi('9')">9</button>
+                        <button onclick="aggiungi('/')">÷</button>
+
+                        <button onclick="aggiungi('4')">4</button>
+                        <button onclick="aggiungi('5')">5</button>
+                        <button onclick="aggiungi('6')">6</button>
+                        <button onclick="aggiungi('*')">×</button>
+
+                        <button onclick="aggiungi('1')">1</button>
+                        <button onclick="aggiungi('2')">2</button>
+                        <button onclick="aggiungi('3')">3</button>
+                        <button onclick="aggiungi('-')">−</button>
+
+                        <button onclick="aggiungi('0')">0</button>
+                        <button onclick="aggiungi('.')">.</button>
+                        <button onclick="calcola()" id="uguale">=</button>
+                        <button onclick="aggiungi('+')">+</button>
+                    </div>
+
+                    <div id="costanti">
+                        <button onclick="aggiungi('τ')">τ</button>
+                        <button onclick="aggiungi('c')">c</button>
+                        <button onclick="aggiungi('G')">G</button>
+                        <button onclick="aggiungi('h')">h</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="pagine.js"></script>
+        <script>
+            const display = document.getElementById("calc-display");
+            const msg = document.getElementById("calc-msg");
+            const mode = document.getElementById("calc-mode");
+
+            let appenaCalcolato = false;
+            let gradi = false;
+
+            function aggiungi(v) {
+
+                if(display.value === "Errore") {
+                    display.value = "0";
+                }
+
+                if(appenaCalcolato) {
+
+                    if("0123456789.πeφτcGh".includes(v[0])) {
+                        display.value = "";
+                    }
+
+                    appenaCalcolato = false;
+                }
+
+                if(display.value === "0" && !"." .includes(v)) {
+                    display.value = "";
+                }
+
+                display.value += v;
+                msg.textContent = "Scrittura";
+            }
+
+            function pulisci() {
+                display.value = "0";
+                appenaCalcolato = false;
+                msg.textContent = "Pulita";
+            }
+
+            function cancellaUno() {
+
+                if(appenaCalcolato || display.value === "Errore") {
+                    pulisci();
+                    return;
+                }
+
+                display.value = display.value.slice(0,-1);
+
+                if(display.value === "") {
+                    display.value = "0";
+                }
+            }
+
+            function toggleAngolo() {
+                gradi = !gradi;
+                mode.textContent = gradi ? "DEG" : "RAD";
+            }
+
+            function fattoriale(n) {
+
+                if(n < 0 || !Number.isInteger(n)) {
+                    throw new Error("fattoriale non valido");
+                }
+
+                let r = 1;
+
+                for(let i = 2; i <= n; i++) {
+                    r *= i;
+                }
+
+                return r;
+            }
+
+            function sistemaFattoriali(expr) {
+                return expr.replace(/(\d+|\([^()]*\))!/g, "fact($1)");
+            }
+
+            function prepara(expr) {
+
+                expr = expr.replaceAll("π", "PI");
+                expr = expr.replaceAll("τ", "TAU");
+                expr = expr.replaceAll("φ", "PHI");
+
+                expr = expr.replace(/\be\b/g, "E");
+                expr = expr.replace(/\bc\b/g, "C");
+                expr = expr.replace(/\bG\b/g, "GRAV");
+                expr = expr.replace(/\bh\b/g, "PLANCK");
+
+                expr = expr.replaceAll("^", "**");
+                expr = expr.replaceAll("%", "/100");
+
+                expr = sistemaFattoriali(expr);
+
+                return expr;
+            }
+
+            function calcola() {
+
+                try {
+
+                    let expr = prepara(display.value);
+
+                    const PI = Math.PI;
+                    const TAU = Math.PI * 2;
+                    const E = Math.E;
+                    const PHI = (1 + Math.sqrt(5)) / 2;
+
+                    const C = 299792458;
+                    const GRAV = 6.67430e-11;
+                    const PLANCK = 6.62607015e-34;
+
+                    const toRad = x => gradi ? x * Math.PI / 180 : x;
+
+                    const sin = x => Math.sin(toRad(x));
+                    const cos = x => Math.cos(toRad(x));
+                    const tan = x => Math.tan(toRad(x));
+
+                    const sqrt = Math.sqrt;
+                    const log = Math.log10;
+                    const ln = Math.log;
+                    const abs = Math.abs;
+                    const round = Math.round;
+                    const floor = Math.floor;
+                    const ceil = Math.ceil;
+                    const exp = Math.exp;
+                    const fact = fattoriale;
+
+                    const risultato = Function(
+                        "PI","TAU","E","PHI","C","GRAV","PLANCK",
+                        "sin","cos","tan","sqrt","log","ln","abs","round","floor","ceil","exp","fact",
+                        "return " + expr
+                    )(PI,TAU,E,PHI,C,GRAV,PLANCK,sin,cos,tan,sqrt,log,ln,abs,round,floor,ceil,exp,fact);
+
+                    if(!Number.isFinite(risultato)) {
+                        throw new Error("risultato non valido");
+                    }
+
+                    display.value = Number(risultato.toPrecision(14));
+                    appenaCalcolato = true;
+                    msg.textContent = "Risultato";
+                }
+
+                catch(e) {
+                    display.value = "Errore";
+                    appenaCalcolato = true;
+                    msg.textContent = "Errore nella formula";
+                }
+            }
+
+            document.addEventListener("keydown", e => {
+
+                const tasti = "0123456789+-*/().^%";
+
+                if(tasti.includes(e.key)) {
+                    aggiungi(e.key);
+                }
+
+                if(e.key === "Enter") {
+                    calcola();
+                }
+
+                if(e.key === "Backspace") {
+                    cancellaUno();
+                }
+
+                if(e.key === "Escape") {
+                    pulisci();
+                }
+            });        
+        </script>
+    </body>
+</html>
